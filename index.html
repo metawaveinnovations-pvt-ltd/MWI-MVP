@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+
+  <!-- Intercept and suppress cross-origin script error before any third-party script runs -->
+  <script>
+    (function() {
+      window.addEventListener('error', function(e) {
+        if (e.message === 'Script error.' || e.message === 'Script error' || (e.target && e.target.tagName === 'SCRIPT')) {
+          if (e.stopImmediatePropagation) e.stopImmediatePropagation();
+          if (e.preventDefault) e.preventDefault();
+          return true;
+        }
+      }, true);
+      var oldOnError = window.onerror;
+      window.onerror = function(msg, url, line, col, error) {
+        if (msg === 'Script error.' || msg === 'Script error' || !url) {
+          return true;
+        }
+        if (typeof oldOnError === 'function') {
+          return oldOnError.apply(this, arguments);
+        }
+      };
+    })();
+  </script>
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-D3K02YJLYK" onerror="this.onerror=null;"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-D3K02YJLYK');
+  </script>
+
+  <!-- Performance Preconnects & Asset Preloading -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300;12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=Syne:wght@600;700;800;900&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;0,6..72,700;0,6..72,800;1,6..72,400;1,6..72,500;1,6..72,600&family=JetBrains+Mono:wght@400;500;600;700&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300;12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=Syne:wght@600;700;800;900&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;0,6..72,700;0,6..72,800;1,6..72,400;1,6..72,500;1,6..72,600&family=JetBrains+Mono:wght@400;500;600;700&display=swap" media="print" onload="this.media='all'">
+  <noscript>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300;12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=Syne:wght@600;700;800;900&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;0,6..72,700;0,6..72,800;1,6..72,400;1,6..72,500;1,6..72,600&family=JetBrains+Mono:wght@400;500;600;700&display=swap">
+  </noscript>
+  <link rel="preload" href="/Meta_Logo.webp" as="image" type="image/webp">
+  <link rel="dns-prefetch" href="https://www.googletagmanager.com">
+  <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+
+  <!-- Primary Meta Tags -->
+  <meta name="google-site-verification" content="YOUR_GSC_VERIFICATION_CODE_HERE">
+  <title>MetaWave Innovations | Custom Software Development & AI Engineering Company</title>
+  <meta name="description" content="MetaWave Innovations is a premier global enterprise custom software development, AI solutions, and cloud transformation partner engineering high-performance web apps, mobile solutions, and enterprise systems.">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  <meta name="author" content="MetaWave Innovations Pvt Ltd">
+  <meta name="publisher" content="MetaWave Innovations Pvt Ltd">
+  <meta name="theme-color" content="#FAFBFD">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <meta name="format-detection" content="telephone=no">
+
+  <link rel="canonical" href="https://metawaveinnovations.com/">
+
+  <!-- Favicons & Icons -->
+  <link rel="icon" type="image/webp" href="/Meta_Logo.webp">
+  <link rel="shortcut icon" href="/Meta_Logo.webp">
+  <link rel="apple-touch-icon" href="/Meta_Logo.webp">
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://metawaveinnovations.com/">
+  <meta property="og:title" content="MetaWave Innovations | Custom Software Development & AI Engineering Company">
+  <meta property="og:description" content="Enterprise custom software engineering, AI systems, digital transformation, business automation, and cloud solutions.">
+  <meta property="og:image" content="https://metawaveinnovations.com/og-image.jpg">
+  <meta property="og:site_name" content="MetaWave Innovations">
+  <meta property="og:locale" content="en_US">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@MetaWaveTech">
+  <meta name="twitter:title" content="MetaWave Innovations | Enterprise Software & AI Engineering">
+  <meta name="twitter:description" content="Custom Software Development, AI Solutions & Cloud Transformation Experts">
+  <meta name="twitter:image" content="https://metawaveinnovations.com/og-image.jpg">
+
+  <!-- Geo & Language -->
+  <meta name="geo.region" content="PK">
+  <meta name="geo.placename" content="Islamabad">
+  <meta http-equiv="content-language" content="en">
+
+  <!-- AdSense Integration -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3940256099942544" onerror="this.onerror=null;"></script>
+</head>
+<body class="bg-[#fafafa] text-slate-800 antialiased selection:bg-[#326E45]/20 selection:text-[#326E45]">
+  <div id="root"></div>
+  <script type="module" src="/src/main.tsx"></script>
+</body>
+</html>
