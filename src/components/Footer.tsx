@@ -58,7 +58,7 @@ export function Footer({ onNavClick, onPreload }: FooterProps) {
   ];
 
   return (
-    <footer className="bg-gradient-to-b from-slate-950 via-slate-900 to-emerald-950 border-t border-slate-800/80 pt-20 pb-12 relative overflow-hidden">
+    <footer className="bg-gradient-to-b from-slate-950 via-slate-900 to-emerald-950 border-t border-slate-800/80 pt-16 sm:pt-20 pb-28 lg:pb-12 relative overflow-hidden">
       
       {/* Background glowing gradients */}
       <div className="absolute inset-0 pointer-events-none -z-10 bg-[radial-gradient(circle_at_bottom_left,rgba(16,185,129,0.05),transparent_40%)]" />

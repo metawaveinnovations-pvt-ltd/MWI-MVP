@@ -14,6 +14,7 @@ import { CtaSection } from './components/CtaSection';
 import { TeamSection } from './components/TeamSection';
 import { GlobalNetworkSection } from './components/GlobalNetworkSection';
 import { Footer } from './components/Footer';
+import { MobileBottomNav } from './components/MobileBottomNav';
 import { playSound } from './utils/audio';
 
 // Preloadable Lazy Loading Strategy for instantaneous route transitions with self-healing retry
@@ -1119,6 +1120,12 @@ export default function App() {
       {/* 4. Multi-column corporate footer */}
       <Footer onNavClick={handleNavigatePageOrSection} onPreload={handlePreload} />
 
+      {/* Mobile and Tablet Native App Bottom Navigation Dock */}
+      <MobileBottomNav
+        activeSection={activeSection}
+        onNavClick={handleNavigatePageOrSection}
+      />
+
       {/* Scroll to Top Dynamic backlink */}
       <AnimatePresence>
         {showScrollTop && (
@@ -1127,7 +1134,7 @@ export default function App() {
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.8 }}
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-            className="fixed bottom-6 right-6 p-3 rounded-xl bg-[#326E45] hover:bg-[#20462c] text-white font-bold shadow-md hover:shadow-lg z-40 transition-all cursor-pointer border border-[#326E45]/10"
+            className="fixed bottom-22 lg:bottom-6 right-4 sm:right-6 p-3 rounded-xl bg-[#326E45] hover:bg-[#20462c] text-white font-bold shadow-md hover:shadow-lg z-40 transition-all cursor-pointer border border-[#326E45]/10"
             aria-label="Back to top"
           >
             <ArrowUp size={16} />

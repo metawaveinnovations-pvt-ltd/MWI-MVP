@@ -169,7 +169,7 @@ export function AnnouncementBanner({ onCtaclick, onClose }: AnnouncementBannerPr
               href="https://facebook.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="w-6.5 h-6.5 sm:w-7 sm:h-7 rounded-lg bg-white/10 border border-white/20 hover:border-emerald-300 hover:bg-emerald-600/50 text-emerald-100 hover:text-white flex items-center justify-center transition-all duration-200 hover:-translate-y-0.5 shadow-2xs"
+              className="hidden sm:flex w-6.5 h-6.5 sm:w-7 sm:h-7 rounded-lg bg-white/10 border border-white/20 hover:border-emerald-300 hover:bg-emerald-600/50 text-emerald-100 hover:text-white items-center justify-center transition-all duration-200 hover:-translate-y-0.5 shadow-2xs"
               title="Facebook"
             >
               <Facebook size={12} />
@@ -179,7 +179,7 @@ export function AnnouncementBanner({ onCtaclick, onClose }: AnnouncementBannerPr
               href="https://instagram.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="w-6.5 h-6.5 sm:w-7 sm:h-7 rounded-lg bg-white/10 border border-white/20 hover:border-emerald-300 hover:bg-emerald-600/50 text-emerald-100 hover:text-white flex items-center justify-center transition-all duration-200 hover:-translate-y-0.5 shadow-2xs"
+              className="hidden sm:flex w-6.5 h-6.5 sm:w-7 sm:h-7 rounded-lg bg-white/10 border border-white/20 hover:border-emerald-300 hover:bg-emerald-600/50 text-emerald-100 hover:text-white items-center justify-center transition-all duration-200 hover:-translate-y-0.5 shadow-2xs"
               title="Instagram"
             >
               <Instagram size={12} />

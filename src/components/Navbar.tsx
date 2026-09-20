@@ -286,10 +286,27 @@ export function Navbar({ onNavClick, onPreload, activeSection, isBannerOpen = tr
     } else {
       document.body.style.overflow = '';
     }
+    window.dispatchEvent(new CustomEvent('mwi_mobile_menu_state', { detail: { open: mobileMenuOpen } }));
     return () => {
       document.body.style.overflow = '';
     };
   }, [mobileMenuOpen]);
+
+  useEffect(() => {
+    const handleOpenMenu = () => setMobileMenuOpen(true);
+    const handleCloseMenu = () => setMobileMenuOpen(false);
+    const handleOpenSearchEvent = () => setSearchOpen(true);
+
+    window.addEventListener('mwi_open_mobile_menu', handleOpenMenu);
+    window.addEventListener('mwi_close_mobile_menu', handleCloseMenu);
+    window.addEventListener('mwi_open_search', handleOpenSearchEvent);
+
+    return () => {
+      window.removeEventListener('mwi_open_mobile_menu', handleOpenMenu);
+      window.removeEventListener('mwi_close_mobile_menu', handleCloseMenu);
+      window.removeEventListener('mwi_open_search', handleOpenSearchEvent);
+    };
+  }, []);
 
   const handleMouseEnterMenu = (menu: string) => {
     if (closeTimerRef.current) {
@@ -696,16 +713,48 @@ export function Navbar({ onNavClick, onPreload, activeSection, isBannerOpen = tr
             </Magnetic>
           </div>
 
-          {/* MOBILE MENU TRIGGER (TABLET & MOBILE) */}
-          <button
-            onClick={() => setMobileMenuOpen(true)}
-            className="lg:hidden flex items-center justify-center gap-1.5 px-3 py-2 xs:px-3.5 xs:py-2.5 rounded-full border border-slate-200 bg-slate-50 text-slate-700 hover:text-[#326E45] hover:bg-slate-100 transition-all font-sans font-bold text-[11px] select-none cursor-pointer active:scale-95 shadow-2xs min-h-[44px] min-w-[44px] focus-visible:ring-2 focus-visible:ring-emerald-500/70 focus-visible:outline-none group"
-            aria-label="Open Navigation Menu"
-            aria-expanded={mobileMenuOpen}
-          >
-            <Grid size={13} className="text-[#326E45] transition-transform duration-300 group-hover:rotate-12" />
-            <span className="hidden xs:inline">Launch Hub</span>
-          </button>
+          {/* MOBILE ACTIONS CLUSTER (TABLET & MOBILE) */}
+          <div className="flex lg:hidden items-center gap-1 sm:gap-1.5 shrink-0">
+            {/* Mobile Search Trigger */}
+            <button
+              onClick={() => setSearchOpen(true)}
+              className="flex items-center justify-center w-9 h-9 xs:w-10 xs:h-10 rounded-full border border-slate-200 bg-slate-50 text-slate-600 hover:text-[#326E45] hover:bg-slate-100 transition-all cursor-pointer active:scale-90 shadow-2xs focus-visible:ring-2 focus-visible:ring-emerald-500/70 focus-visible:outline-none"
+              aria-label="Open Command Search"
+              title="Search (⌘K)"
+            >
+              <Search size={14} />
+            </button>
+
+            {/* Mobile Tactile Audio Toggle */}
+            <button
+              onClick={handleToggleSound}
+              className={`flex items-center justify-center w-9 h-9 xs:w-10 xs:h-10 rounded-full border transition-all cursor-pointer active:scale-90 shadow-2xs focus-visible:ring-2 focus-visible:ring-emerald-500/70 focus-visible:outline-none ${
+                soundEnabled
+                  ? 'bg-emerald-50 border-emerald-200 text-[#326E45]'
+                  : 'bg-slate-50 border-slate-200 text-slate-500 hover:text-slate-800'
+              }`}
+              aria-label="Toggle Audio Feedback"
+              aria-pressed={soundEnabled}
+              title={soundEnabled ? "Mute Audio Feedback" : "Unmute Audio Feedback"}
+            >
+              {soundEnabled ? (
+                <Volume2 size={14} className="animate-pulse" />
+              ) : (
+                <VolumeX size={14} />
+              )}
+            </button>
+
+            {/* Hub Drawer Trigger */}
+            <button
+              onClick={() => setMobileMenuOpen(true)}
+              className="flex items-center justify-center gap-1.5 px-2.5 xs:px-3 py-1.5 xs:py-2 rounded-full border border-slate-200 bg-slate-50 text-slate-700 hover:text-[#326E45] hover:bg-slate-100 transition-all font-sans font-bold text-[11px] select-none cursor-pointer active:scale-95 shadow-2xs min-h-[36px] xs:min-h-[40px] focus-visible:ring-2 focus-visible:ring-emerald-500/70 focus-visible:outline-none group"
+              aria-label="Open Navigation Menu"
+              aria-expanded={mobileMenuOpen}
+            >
+              <Grid size={13} className="text-[#326E45] transition-transform duration-300 group-hover:rotate-12" />
+              <span className="hidden xs:inline">Hub</span>
+            </button>
+          </div>
         </div>
 
         {/* DROPDOWN MEGA-MENUS PANELS SYSTEMS */}
@@ -1305,7 +1354,10 @@ export function Navbar({ onNavClick, onPreload, activeSection, isBannerOpen = tr
               transition={{ type: 'spring', damping: 30, stiffness: 320 }}
               className="relative w-full max-w-[340px] sm:max-w-[380px] h-full bg-white shadow-2xl p-6 overflow-y-auto flex flex-col justify-between border-l border-slate-100 pointer-events-auto"
             >
-              <div>
+              <div className="flex flex-col flex-1">
+                {/* Visual Sheet Pull Indicator */}
+                <div className="w-10 h-1 rounded-full bg-slate-200 mx-auto -mt-2 mb-3.5 shrink-0" aria-hidden="true" />
+
                 {/* Header of Mobile Menu */}
                 <div className="flex items-center justify-between pb-4 border-b border-slate-100 mb-5 shrink-0">
                   <div className="flex items-center gap-2">
